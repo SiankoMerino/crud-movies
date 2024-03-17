@@ -1,0 +1,24 @@
+<app-toolbar (typeSelected)="changeTitle($event)"></app-toolbar>
+
+<div class="container">
+    <app-search></app-search>
+
+    <div class="header">
+        <h1>Listado de {{titleList}}</h1>
+        <button mat-icon-button aria-label="Agregar película" (click)="addMovie()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div *ngIf="loading" class="div-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div *ngIf="!loading">
+        <div *ngFor="let elem of listMovies">
+            <app-card-movie [movie]="elem"></app-card-movie>
+        </div>
+    </div>
+
+</div>

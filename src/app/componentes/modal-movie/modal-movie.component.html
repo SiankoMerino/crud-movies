@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{data.type}} Película</h2>
+<div mat-dialog-content>
+    <div class="div-img">
+        <button [style.backgroundImage]="'url(' + urlImagen + ')'" *ngIf="urlImagen; else uploadButton"
+            class="custom-upload-btn" (click)="fileInput.click()">
+        </button>
+        <ng-template #uploadButton>
+            <button mat-fab (click)="fileInput.click()" class="custom-fab">
+                <mat-icon>file_upload</mat-icon>
+                Subir logo
+            </button>
+        </ng-template>
+        <input type="file" (change)="updateImg($event)" hidden #fileInput>
+    </div>
+    <mat-form-field>
+        <mat-label>Nombre de película</mat-label>
+        <input matInput [(ngModel)]="data.movie.title">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Rating</mat-label>
+        <input matInput [(ngModel)]="data.movie.rating">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Género</mat-label>
+        <input type="text" matInput [matAutocomplete]="auto" [(ngModel)]="genreName"
+            (ngModelChange)="filterGenres($event)">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let genre of filteredOptionsGenres" [value]="genre.netflix_id">
+                {{ genre.genre }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sinopsis</mat-label>
+        <textarea matInput [(ngModel)]="data.movie.synopsis" rows="5"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="div-actions">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button cdkFocusInitial [mat-dialog-close]="data" (click)="saveMovie()">Guardar</button>
+</div>

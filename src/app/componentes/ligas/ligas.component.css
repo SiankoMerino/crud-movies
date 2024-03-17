@@ -1,0 +1,42 @@
+.container {
+    background-color: rgba(196, 196, 196, 0.35);
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-weight: bold;
+    margin-left: 6%;
+    margin-top: 20px;
+}
+
+button {
+    margin-right: 6%;
+    background-color: #E50914;
+}
+
+mat-icon {
+    color: #FFFFFF;
+}
+
+mat-divider {
+    border-color: #E50914;
+    border-width: 2px;
+    margin: 0px 5% 20px 5%;
+}
+
+.div-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #E50914 !important;
+}

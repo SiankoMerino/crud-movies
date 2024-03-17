@@ -1,0 +1,32 @@
+mat-form-field {
+    background-color: #FFFFFF;
+    width: 75%;
+    height: 50px;
+    margin-left: 5%;
+    margin-top: 20px;
+    border-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+:host ::ng-deep .mat-form-field-label {
+    color: #C4C4C4;
+}
+
+:host ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #E50914;
+}
+
+:host ::ng-deep .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #E50914;
+}
+
+:host ::ng-deep mat-icon {
+    color:#E50914;
+}
+
+@media (width >=768px) and (width <=1280px) {
+    mat-form-field {
+        width: 85%;
+    }
+}

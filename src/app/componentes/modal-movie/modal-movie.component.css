@@ -1,0 +1,58 @@
+::ng-deep .mat-dialog-container {
+    background-color: #4E0105;
+    border-radius: 20px;
+}
+
+:host ::ng-deep .mat-form-field-label {
+    color: #C4C4C4;
+}
+
+:host ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #FFFFFF;
+}
+
+:host ::ng-deep .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #FFFFFF;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.custom-fab {
+    width: 150PX;
+    height: 150px;
+    border-radius: 50%;
+    line-height: 60px;
+    background-color: #FFFFFF;
+}
+
+.div-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.custom-upload-btn {
+    border: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.div-actions {
+    justify-content: flex-end;
+}
+
+::ng-deep .mat-option {
+    height: 48px;
+    color: #4E0105;
+    background-color: #FFFFFF;
+}
+
+::ng-deep .mat-option:hover {
+    color: #FFFFFF;
+}

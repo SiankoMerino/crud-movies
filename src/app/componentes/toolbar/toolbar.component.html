@@ -1,0 +1,30 @@
+<mat-toolbar class="tb-personalized">
+    <button mat-icon-button class="button-menu">
+        <div class="div-menu">
+            <mat-icon>menu</mat-icon>
+            <h3>MENU</h3>
+        </div>
+    </button>
+    <div class="div-nav">
+        <button
+            mat-button
+            (click)="selectOption('option1')"
+            [class.selected]="selectedOption === 'option1'">
+                PELICULAS
+        </button>
+        <button 
+            mat-button
+            (click)="selectOption('option2')"
+            [class.selected]="selectedOption === 'option2'">
+                ACTORES
+        </button>
+        <div class="div-img">
+            <div
+                mat-card-avatar
+                class="header-image"
+                [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}">
+            </div>
+        </div>
+    </div>
+</mat-toolbar>
+

@@ -1,0 +1,66 @@
+.tb-personalized {
+    background-color: #E50914;
+    color: #000000;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    justify-content:space-between;
+}
+
+button {
+    width: 100px;
+    text-align: center;
+}
+
+h3 {
+    display: none;
+}
+
+.div-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.div-img {
+    width: 50px;
+}
+
+.button-menu {
+    width: 40px;
+}
+
+.div-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-weight: normal;
+}
+
+mat-toolbar span {
+    cursor: pointer;
+    margin: 5%;
+}
+
+.header-image {
+    margin-left: 5px;
+    background-size: cover;
+    background-position: center;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+/* @media (width >= 768px) {
+    h3 {
+        display: block;
+    }
+} */
