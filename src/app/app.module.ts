@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AsyncPipe} from '@angular/common';
+import { LoadErrorComponent } from './componentes/load-error/load-error.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AsyncPipe} from '@angular/common';
     ToolbarComponent,
     SearchComponent,
     CardMovieComponent,
-    ModalMovieComponent
+    ModalMovieComponent,
+    LoadErrorComponent
   ],
   imports: [
     BrowserModule,
