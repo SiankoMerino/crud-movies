@@ -15,9 +15,25 @@ h1 {
     margin-top: 20px;
 }
 
+p {
+    display: none;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
 button {
     margin-right: 6%;
     background-color: #E50914;
+}
+
+button:hover {
+    background-color: #FF6666;
+}
+
+.div-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 mat-icon {
@@ -39,4 +55,42 @@ mat-divider {
 
 ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
     stroke: #E50914 !important;
+}
+
+.container-card-movie {
+    margin-right: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.container-card-actor {
+    height: 70vh;
+}
+
+button:disabled {
+    background-color: #CCCCCC;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+@media (width >=768px) {
+    p {
+        display: block;
+    }
+
+    .container-card-movie {
+        margin-left: 3%;
+        margin-right: 5%;
+    }
+
+    button {
+        width: 150px;
+        border-radius: 20px;
+    }
+
+    mat-icon {
+        margin-top: -15px;
+    }
 }

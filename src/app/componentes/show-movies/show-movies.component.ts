@@ -1,7 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
-import { ListMovie } from 'src/app/mockups/list-movies';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
 import { MovieService } from 'src/app/servicios/movie.service';
 
@@ -15,6 +14,9 @@ export class ShowMoviesComponent implements OnInit {
   titleList: string = 'Películas';
   listMovies: CardMovie[] = [];
   loading: boolean = true;
+  errorList: boolean = false;
+  isMovie: boolean = true;
+  isActor: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -39,8 +41,12 @@ export class ShowMoviesComponent implements OnInit {
     this.titleList = (option === 'option1') ? 'Películas' : 'Actores';
     if (option === 'option1') {
       console.log('cargar api de lista de peliculas');
+      this.isMovie = true;
+      this.isActor = false;
     } else {
       console.log('cargar api de lista de actores');
+      this.isMovie = false;
+      this.isActor = true;
     }
   }
 

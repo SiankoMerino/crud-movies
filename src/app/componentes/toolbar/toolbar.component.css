@@ -14,6 +14,7 @@ button {
 
 h3 {
     display: none;
+    margin-left: 10px;
 }
 
 .div-nav {
@@ -58,9 +59,18 @@ mat-toolbar span {
     border-radius: 50%;
 }
 
+button:hover {
+    background-color: #B7000D;
+}
 
-/* @media (width >= 768px) {
+@media (width >= 768px) {
     h3 {
         display: block;
     }
-} */
+    
+    .button-menu {
+        width: 150px;
+        border-radius: 20px;
+        margin-left: 1%;
+    }
+}
