@@ -1,12 +1,15 @@
 <app-toolbar (typeSelected)="changeTitle($event)"></app-toolbar>
 
 <div class="container">
-    <app-search></app-search>
+    <app-search *ngIf="!errorList"></app-search>
 
     <div class="header">
         <h1>Listado de {{titleList}}</h1>
-        <button mat-icon-button aria-label="Agregar película" (click)="addMovie()">
-            <mat-icon>add</mat-icon>
+        <button mat-icon-button aria-label="Agregar película" (click)="addMovie()" [disabled]="errorList">
+            <div class="div-button">
+                <mat-icon>add</mat-icon>
+                <p>Agregar</p>
+            </div>
         </button>
     </div>
     <mat-divider></mat-divider>
@@ -15,10 +18,19 @@
         <mat-spinner></mat-spinner>
     </div>
 
-    <div *ngIf="!loading">
-        <div *ngFor="let elem of listMovies">
-            <app-card-movie [movie]="elem"></app-card-movie>
-        </div>
+    <div *ngIf="errorList" class="div-spinner">
+        <app-load-error></app-load-error>
+    </div>
+
+    <div *ngIf="!loading && !errorList && isMovie" class="container-card-movie">
+        <app-card-movie 
+            *ngFor="let elem of listMovies"
+            [movie]="elem">
+        </app-card-movie>
+    </div>
+
+    <!-- Div para actores -->
+    <div *ngIf="!loading && !errorList && isActor" class="container-card-actor">
     </div>
 
 </div>

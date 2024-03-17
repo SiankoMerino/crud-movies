@@ -14,6 +14,9 @@ export class LigasComponent implements OnInit {
   titleList: string = 'Películas';
   listMovies: CardMovie[] = ListMovie;
   loading: boolean = false;
+  errorList: boolean = false;
+  isMovie: boolean = true;
+  isActor: boolean = false;
 
   constructor(
     public dialog: MatDialog
@@ -26,8 +29,12 @@ export class LigasComponent implements OnInit {
     this.titleList = (option === 'option1') ? 'Películas' : 'Actores';
     if (option === 'option1') {
       console.log('cargar api de lista de peliculas');
+      this.isMovie = true;
+      this.isActor = false;
     } else {
       console.log('cargar api de lista de actores');
+      this.isMovie = false;
+      this.isActor = true;
     }
   }
 

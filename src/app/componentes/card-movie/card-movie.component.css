@@ -1,5 +1,6 @@
 .div-card {
-    max-width: 400px;
+    width: 300px;
+    height: 610px;
     margin: 5%;
     background-color: #FFFFFF;
     border: 1px solid #E50914;
@@ -34,4 +35,5 @@ mat-icon {
 
 img {
     border-radius: 20px;
+    aspect-ratio: 7/10;
 }

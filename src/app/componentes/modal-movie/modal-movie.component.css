@@ -56,3 +56,18 @@ mat-form-field {
 ::ng-deep .mat-option:hover {
     color: #FFFFFF;
 }
+
+button:hover {
+    background-color: #4E0105;
+}
+
+@media (width >= 768px) {
+    ::ng-deep .mat-dialog-container {
+        width: 500px;
+        height: 600px;
+    }
+
+    ::ng-deep .mat-dialog-content {
+        max-height: unset;
+    }
+}
