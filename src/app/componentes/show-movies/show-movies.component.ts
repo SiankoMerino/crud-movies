@@ -3,23 +3,36 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ListMovie } from 'src/app/mockups/list-movies';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
+import { MovieService } from 'src/app/servicios/movie.service';
 
 @Component({
   selector: 'app-ligas',
-  templateUrl: './ligas.component.html',
-  styleUrls: ['./ligas.component.css']
+  templateUrl: './show-movies.component.html',
+  styleUrls: ['./show-movies.component.css']
 })
-export class LigasComponent implements OnInit {
+export class ShowMoviesComponent implements OnInit {
 
   titleList: string = 'Películas';
-  listMovies: CardMovie[] = ListMovie;
-  loading: boolean = false;
+  listMovies: CardMovie[] = [];
+  loading: boolean = true;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private movieService: MovieService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.loadMovies()
+  }
+
+  async loadMovies() {
+    try {
+      const response = await this.movieService.obtenerPeliculas();
+      this.listMovies = response.results;
+      this.loading = false;
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   changeTitle(option: string) {
