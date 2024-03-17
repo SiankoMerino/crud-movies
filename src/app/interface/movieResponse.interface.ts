@@ -1,6 +1,15 @@
-import { TitleType } from "./movieResponse.interface";
+export interface MovieResponse {
+    object:  ObjectI;
+    results: Result[];
+}
 
-export interface CardMovie {
+export interface ObjectI {
+    total:  number;
+    limit:  number;
+    offset: number;
+}
+
+export interface Result {
     title:      string;
     img:        string;
     title_type: TitleType;
@@ -16,12 +25,6 @@ export interface CardMovie {
     title_date: Date;
 }
 
-export interface TypeMovie {
-    type: string,
-    movie: CardMovie,
-}
-
-export interface Genre {
-    netflix_id: number,
-    genre: string
+export enum TitleType {
+    Movie = "movie",
 }
