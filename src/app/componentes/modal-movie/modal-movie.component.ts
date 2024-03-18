@@ -12,7 +12,7 @@ export class ModalMovieComponent implements OnInit {
   
   urlImagen: string | ArrayBuffer | null = '';
   optionsGenres: Genre[] = ListGenres;
-  filteredOptionsGenres: Genre[] = ListGenres; // Lista para filtrar
+  filteredOptionsGenres: Genre[] = ListGenres;
   genreName: string = '';
 
   constructor(
@@ -28,7 +28,7 @@ export class ModalMovieComponent implements OnInit {
     if (selectedGenre) {
       this.genreName = selectedGenre.genre;
     } else {
-      this.genreName = ''; // Asegúrate de tener un valor predeterminado en caso de que no se encuentre el género
+      this.genreName = ''; 
     }
       
     }, 5000);
@@ -51,7 +51,7 @@ export class ModalMovieComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e) => {
         this.urlImagen = reader.result as string;
-        this.data.movie.img = this.urlImagen; // Asigna la URL de la imagen a data.img
+        this.data.movie.img = this.urlImagen; 
       };
       reader.readAsDataURL(archivo);
     }
@@ -62,7 +62,7 @@ export class ModalMovieComponent implements OnInit {
   }
 
   saveMovie(): void {
-    if (this.data.type === 'Nueva') {
+    if (this.data.type === 'Crear') {
       console.log('api para nueva pelicula');
     } else {
       console.log('api para editar pelicula');

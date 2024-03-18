@@ -12,8 +12,8 @@ export interface ObjectI {
 export interface Result {
     title:      string;
     img:        string;
-    title_type: TitleType;
-    netflix_id: number;
+    title_type: string;
+    netflix_id: number | string;
     synopsis:   string;
     rating:     string;
     year:       string;
@@ -22,9 +22,6 @@ export interface Result {
     poster:     string;
     top250:     number;
     top250tv:   number;
-    title_date: Date;
+    title_date: string;
 }
 
-export enum TitleType {
-    Movie = "movie",
-}

@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
 import { MovieService } from 'src/app/servicios/movie.service';
+import { ListMovie } from 'src/app/mockups/list-movies';
 
 @Component({
   selector: 'app-ligas',
@@ -12,7 +13,7 @@ import { MovieService } from 'src/app/servicios/movie.service';
 export class ShowMoviesComponent implements OnInit {
 
   titleList: string = 'Películas';
-  listMovies: CardMovie[] = [];
+  listMovies: CardMovie[] = ListMovie;
   loading: boolean = true;
   errorList: boolean = false;
   isMovie: boolean = true;
@@ -24,13 +25,21 @@ export class ShowMoviesComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    await this.loadMovies()
+    const movies = localStorage.getItem('movies');
+    if (!movies) {
+      await this.loadMovies()
+    } else {
+      this.listMovies = JSON.parse(movies)
+      this.loading = false;
+    }
   }
 
   async loadMovies() {
     try {
       const response = await this.movieService.obtenerPeliculas();
       this.listMovies = response.results;
+      const movies = JSON.stringify(this.listMovies);
+      localStorage.setItem('movies', movies)
       this.loading = false;
     } catch (error) {
       console.log(error)
@@ -54,19 +63,33 @@ export class ShowMoviesComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalMovieComponent, {
       data: {
         movie: {
-          netflix_id: '',
           title: '',
           img: '',
+          title_type: 'movie',
+          netflix_id: 0,
           synopsis: '',
-          rating: ''
+          rating: '',
+          year: '',
+          runtime: '',
+          imdb_id: '',
+          poster: '',
+          top250: 0,
+          top250tv: 0,
+          title_date: new Date().getDate().toString(),
         },
-        type: 'Nueva'
+        type: 'Crear'
       },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      this.listMovies.push(result.movie)
+      this.updateMovies()
     });
+  }
+
+  updateMovies() {
+    localStorage.removeItem('movies');
+    localStorage.setItem('movies', JSON.stringify(this.listMovies))
   }
 
 }

@@ -25,7 +25,8 @@
     <div *ngIf="!loading && !errorList && isMovie" class="container-card-movie">
         <app-card-movie 
             *ngFor="let elem of listMovies"
-            [movie]="elem">
+            [movie]="elem"
+            (update)="updateMovies()">
         </app-card-movie>
     </div>
 

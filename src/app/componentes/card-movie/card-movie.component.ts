@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
-import { TitleType } from 'src/app/interface/movieResponse.interface';
 
 @Component({
   selector: 'app-card-movie',
@@ -14,7 +13,7 @@ export class CardMovieComponent implements OnInit {
   @Input() movie: CardMovie = {
     title: '',
     img: '',
-    title_type: TitleType.Movie,
+    title_type: 'Movie',
     netflix_id: 0,
     synopsis: '',
     rating: '',
@@ -24,8 +23,10 @@ export class CardMovieComponent implements OnInit {
     poster: '',
     top250: 0,
     top250tv: 0,
-    title_date: new Date(),
+    title_date: new Date().getDate().toString(),
   }
+
+  @Output() update = new EventEmitter<boolean>()
 
   constructor(
     public dialog: MatDialog
@@ -45,6 +46,7 @@ export class CardMovieComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      this.update.emit(true);
     });
   }
 
