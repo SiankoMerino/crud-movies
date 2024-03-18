@@ -1,6 +1,11 @@
-# LigasFutbol
+# Crud-Movies
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+
+# Detalle del proyecto
+
+El Proyecto consulta a una API (https://rapidapi.com/unogs/api/unogs/), la cual es un buscador no oficial de Netflix online,
+en este pequeño crud podran eliminar, crear y actualizar una pelicula. Tambien incluye un buscador
 
 ## Development server
 
