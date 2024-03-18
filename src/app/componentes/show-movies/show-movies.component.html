@@ -1,7 +1,7 @@
 <app-toolbar (typeSelected)="changeTitle($event)"></app-toolbar>
 
 <div class="container">
-    <app-search *ngIf="!errorList"></app-search>
+    <app-search *ngIf="!errorList" (search)="searchMovie($event)"></app-search>
 
     <div class="header">
         <h1>Listado de {{titleList}}</h1>
@@ -26,7 +26,8 @@
         <app-card-movie 
             *ngFor="let elem of listMovies"
             [movie]="elem"
-            (update)="updateMovies()">
+            (update)="updateMovies()"
+            (delete)="deleteMovies($event)">
         </app-card-movie>
     </div>
 

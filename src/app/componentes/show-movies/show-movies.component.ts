@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
 import { MovieService } from 'src/app/servicios/movie.service';
-import { ListMovie } from 'src/app/mockups/list-movies';
 
 @Component({
   selector: 'app-ligas',
@@ -13,7 +12,7 @@ import { ListMovie } from 'src/app/mockups/list-movies';
 export class ShowMoviesComponent implements OnInit {
 
   titleList: string = 'Películas';
-  listMovies: CardMovie[] = ListMovie;
+  listMovies: CardMovie[] = [];
   loading: boolean = true;
   errorList: boolean = false;
   isMovie: boolean = true;
@@ -82,8 +81,10 @@ export class ShowMoviesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.listMovies.push(result.movie)
-      this.updateMovies()
+      if (result.movie.netflix_id) {
+        this.listMovies.push(result.movie)
+        this.updateMovies()
+      }
     });
   }
 
@@ -92,4 +93,19 @@ export class ShowMoviesComponent implements OnInit {
     localStorage.setItem('movies', JSON.stringify(this.listMovies))
   }
 
+  deleteMovies(movieDelete: CardMovie) {
+    let result = this.listMovies.filter((movie: CardMovie) => movie.netflix_id !== movieDelete.netflix_id && movie.title !== movieDelete.title);
+    this.listMovies = result;
+    this.updateMovies();
+  }
+
+  searchMovie(text: string | null) {
+    if (text && localStorage.getItem('movies')) {
+      this.listMovies = JSON.parse(localStorage.getItem('movies')!).filter((movie: CardMovie) =>
+        movie.title.toLowerCase().includes(text.toLowerCase())
+      );
+    } else if(!text && localStorage.getItem('movies')) {
+      this.listMovies = JSON.parse(localStorage.getItem('movies')!)
+    }
+  }
 }

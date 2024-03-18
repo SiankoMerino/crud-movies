@@ -1,5 +1,5 @@
 <mat-form-field appearance="fill">
     <mat-label>Buscar</mat-label>
-    <input matInput>
+    <input [formControl]="searchControl" placeholder="Buscar Película" matInput>
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
