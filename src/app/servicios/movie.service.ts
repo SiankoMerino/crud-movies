@@ -15,7 +15,7 @@ export class MovieService {
   async obtenerPeliculas(): Promise<MovieResponse> {
     
     let params = new HttpParams();
-    params = params.append('limit', 10);
+    params = params.append('limit', 12);
 
     const headers = new HttpHeaders({
       'X-RapidAPI-Key': '99312522ffmshf33fd196e5a115ap1c187cjsn47bc66417482',

@@ -19,7 +19,6 @@ export class ToolbarComponent implements OnInit {
 
   selectOption(option: string) {
     this.selectedOption = option;
-    console.log('se presiono op', this.selectedOption);
     this.imageUrl = (option === 'option1') ? '../../../assets/img/logo-movie.svg' : '../../../assets/img/logo-actor.svg';
     this.typeSelected.emit(option);
   }

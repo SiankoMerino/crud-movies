@@ -56,20 +56,20 @@ export class ModalMovieComponent implements OnInit {
   }
 
   saveMovie(): void {
-    console.log('movie',this.data.movie);
     if (!this.data.movie.title || !this.data.movie.synopsis || !this.data.movie.img ||
         !this.data.movie.title_type || !this.data.movie.netflix_id || !this.data.movie.year) {
-      this.openSnackBar();
+      this.openSnackBar('Ingresar los campos obligatorios', 'warning');
       return;
     }
+    this.openSnackBar('Se agrego pelicula', 'check');
     this.dialogRef.close(this.data);
   }
 
-  openSnackBar() {
+  openSnackBar(message: string, icon: string) {
     this._snackBar.openFromComponent(AlertMessagesComponents, {
       data: {
-        message: 'Ingresar los campos obligatorios',
-        icon: 'warning'
+        message: message,
+        icon: icon
       },
       duration: this.durationInSeconds * 1000,
     });
