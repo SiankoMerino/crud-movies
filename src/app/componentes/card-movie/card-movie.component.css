@@ -16,12 +16,18 @@ mat-card-actions {
 mat-card-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 74px;
 }
 
 mat-icon {
     margin-top: -16px;
     color: #FFFF00;
     margin-right: 4px;
+}
+
+mat-card-content {
+    height: 80px;
 }
 
 .div-icon {
@@ -35,5 +41,27 @@ mat-icon {
 
 img {
     border-radius: 20px;
+    height: 380px;
     aspect-ratio: 7/10;
+}
+
+p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button-edit {
+    background-color: #C8E6C9;
+}
+
+.button-delete {
+    background-color: #FFCDD2;
+}
+
+.button-edit:hover {
+    background-color: #81C784;
+}
+
+.button-delete:hover {
+    background-color: #E57373;
 }

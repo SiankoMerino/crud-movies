@@ -24,6 +24,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AsyncPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadErrorComponent } from './componentes/load-error/load-error.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { AlertMessagesComponents } from './componentes/alert-messages/alert-messages.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { LoadErrorComponent } from './componentes/load-error/load-error.componen
     SearchComponent,
     CardMovieComponent,
     ModalMovieComponent,
-    LoadErrorComponent
+    LoadErrorComponent,
+    AlertMessagesComponents
   ],
   imports: [
     BrowserModule,
@@ -52,9 +56,10 @@ import { LoadErrorComponent } from './componentes/load-error/load-error.componen
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     AsyncPipe,
-    HttpClientModule 
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

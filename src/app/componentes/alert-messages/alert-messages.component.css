@@ -1,0 +1,14 @@
+.custom-snackbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-icon {
+    color: #4E0105;
+}
+
+span {
+    margin-left: 10px;
+    color: #4E0105;
+}
