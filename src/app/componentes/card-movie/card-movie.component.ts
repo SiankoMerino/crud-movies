@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-card-movie',
@@ -26,10 +27,12 @@ export class CardMovieComponent implements OnInit {
     title_date: new Date().getDate().toString(),
   }
 
-  @Output() update = new EventEmitter<boolean>()
+  @Output() update = new EventEmitter<boolean>();
+  @Output() delete = new EventEmitter<CardMovie>()
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -45,8 +48,20 @@ export class CardMovieComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      this.openSnackBar('Película Editada')
       this.update.emit(true);
+    });
+  }
+
+  deleteMovie() {
+    this.openSnackBar('Película Eliminada')
+    this.delete.emit(this.movie)
+  }
+
+  openSnackBar(message: string, action: string = 'Hecho') {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+      verticalPosition: 'top',
     });
   }
 
