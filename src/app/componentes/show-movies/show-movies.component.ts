@@ -66,7 +66,7 @@ export class ShowMoviesComponent implements OnInit {
           title: '',
           img: '',
           title_type: 'movie',
-          netflix_id: 0,
+          netflix_id: '',
           synopsis: '',
           rating: '',
           year: '',

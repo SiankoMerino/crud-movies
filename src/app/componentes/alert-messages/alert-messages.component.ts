@@ -12,11 +12,13 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 export class AlertMessagesComponents implements OnInit {
   
   message: string = '';
+  icon: string = '';
 
   constructor(
-    @Inject(MAT_SNACK_BAR_DATA) public data: {message: string},
+    @Inject(MAT_SNACK_BAR_DATA) public data: {message: string, icon: string},
   ) {
     this.message = this.data.message;
+    this.icon = this.data.icon;
   }
 
   ngOnInit(): void {
