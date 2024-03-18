@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CardMovie } from 'src/app/interface/card-movie.interface';
 import { ModalMovieComponent } from '../modal-movie/modal-movie.component';
 import { MovieService } from 'src/app/servicios/movie.service';
