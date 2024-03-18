@@ -27,15 +27,6 @@ export class ModalMovieComponent implements OnInit {
   ngOnInit(): void {
     this.urlImagen = this.data.movie.img;
     this.filteredOptionsGenres = this.optionsGenres;
-    setTimeout(() => {
-    const selectedGenre = this.optionsGenres.find(genre => genre.netflix_id === this.data.movie.netflix_id);
-    if (selectedGenre) {
-      this.genreName = selectedGenre.genre;
-    } else {
-      this.genreName = ''; 
-    }
-      
-    }, 5000);
   }
 
   filterGenres(value: string): void {
@@ -66,18 +57,19 @@ export class ModalMovieComponent implements OnInit {
 
   saveMovie(): void {
     console.log('movie',this.data.movie);
-    if (!this.data.movie.title || !this.data.movie.synopsis || !this.data.movie.img) {
-      // Mostrar algún mensaje de error o marcar los campos como invalidados
+    if (!this.data.movie.title || !this.data.movie.synopsis || !this.data.movie.img ||
+        !this.data.movie.title_type || !this.data.movie.netflix_id || !this.data.movie.year) {
       this.openSnackBar();
       return;
     }
-     // this.dialogRef.close(this.data);
+    this.dialogRef.close(this.data);
   }
 
   openSnackBar() {
     this._snackBar.openFromComponent(AlertMessagesComponents, {
       data: {
-        message: 'Ingresar los campos obligatorios'
+        message: 'Ingresar los campos obligatorios',
+        icon: 'warning'
       },
       duration: this.durationInSeconds * 1000,
     });
